@@ -1,0 +1,14 @@
+beautifulsoup4==4.5.1
+Django==2.1.7
+django-cors-headers==2.5.2
+djangorestframework==3.9.2
+gunicorn==19.9.0
+lxml==3.6.4
+mccabe==0.6.1
+numpy==1.11.2
+psycopg2==2.7.7
+pytz==2018.9
+requests==2.12.3
+stop-words==2015.2.23.1
+tabulate==0.7.7
+virtualenv==16.4.3

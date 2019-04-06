@@ -5,7 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
-import os
+from django.views.decorators.csrf import csrf_exempt
 
 
 @api_view(['POST'])

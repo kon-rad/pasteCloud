@@ -29,10 +29,10 @@ ALLOWED_HOSTS = [
     'localhost',
 ]
 CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
     'localhost:3000',
     '127.0.0.1:3000',
 )
-CSRF_COOKIE_SECURE = False
 
 # Application definition
 

@@ -1,4 +1,6 @@
 import axios from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFToken"
+axios.defaults.xsrfCookieName = 'csrftoken'
 
 const API_URL = 'http://localhost:8000';
 

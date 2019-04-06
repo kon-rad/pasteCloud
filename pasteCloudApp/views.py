@@ -3,7 +3,15 @@ from django.views.generic import View
 from rest_framework import status
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
+from rest_framework.decorators import api_view
+from django.views.decorators.csrf import csrf_exempt
 import os
+
+
+@api_view(['POST'])
+@csrf_exempt
+def pasteApi(request):
+    print('got post')
 
 def index(request):
     return HttpResponse("Hello, world. You're at the index.")

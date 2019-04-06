@@ -8,6 +8,10 @@
     --color3: rgba(255, 202, 212, 1);
     --color4: rgba(244, 172, 183, 1);
     --color5: rgba(157, 129, 137, 1);
+
+    --color6: #eef5fd42;
+
+    --color4_dark: rgb(241, 134, 150);
 }
 
 body {
@@ -18,18 +22,34 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 20px;
+  background-color: var(--color6);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 nav {
     background-color: var(--color1);
 }
-.main__input {
-
+.main__paste {
+    padding: 20px;
     margin-top: 50px;
     height: 600px;
+    resize: none;
+}
+.btn, .btn-large, .btn-small {
+    text-decoration: none;
+    color: #fff;
+    background-color: var(--color4);
+}
+.btn:hover, .btn-large:hover, .btn-small:hover {
+    background-color: var(--color4_dark);
+}
+.main__wrapper {
+    margin-bottom: 100px;
+}
+.main_filename {
+    margin-bottom: 40px;
 }

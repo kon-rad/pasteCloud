@@ -9,7 +9,6 @@ class Header extends Component {
                   <div className="container">
                       <Link to="/" className="brand-logo">Paste Cloud</Link>
                       <ul id="nav-mobile" className="right hide-on-med-and-down">
-                          <li><a href="/users">Users</a></li>
                           <li><Link to="/pastes/new">Create New</Link></li>
                           <li><Link to="/pastes/list">List</Link></li>
                       </ul>

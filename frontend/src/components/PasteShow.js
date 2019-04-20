@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PasteCloud from '../util/PasteCloud';
+import TimeFormatter from '../util/TimeFormatter';
 
 const pasteCloud = new PasteCloud();
+const timeFormatter = new TimeFormatter();
 
 class PasteShow extends Component {
   constructor(props) {
@@ -28,7 +30,7 @@ class PasteShow extends Component {
             {text}
           </div>
           <div className="card-action">
-          created: {created} modified: {modified}
+          created: {timeFormatter.getHuman(created)} modified: {timeFormatter.getHuman(modified)}
           </div>
         </div>
       </div>

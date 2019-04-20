@@ -9,13 +9,21 @@ export default class PasteCloud {
     return axios
       .get(`${API_URL}/api/paste/${id}`)
       .then(response => response.data)
-      .catch(err => console.log('err rr', err));
+      .catch(err => console.log(err));
+  }
+  
+  getAllPastes() {
+    return axios
+      .get(`${API_URL}/api/paste/`)
+      .then(response => response.data)
+      .catch(err => console.log(err));
   }
 
   postPaste(paste) {
     return axios
       .post(`${API_URL}/api/paste/`, paste)
       .then(response => response.data)
-      .catch(err => console.log('err rr', err));
+      .catch(err => console.log(err));
   }
+
 }

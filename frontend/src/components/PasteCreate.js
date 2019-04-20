@@ -23,7 +23,6 @@ class PasteCreate extends Component {
     pasteCloud
         .postPaste(this.state)
         .then(res => {
-            console.log('res', res);
             if (!res) return; // todo: implement error message
             this.props.history.push(`/pastes/${res.paste_id}`)
         });

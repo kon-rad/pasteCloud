@@ -16,8 +16,8 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={PasteCreate} />
               <Route path="/pastes/new" exact component={PasteCreate} />
-              <Route path="/pastes/:id" exact component={PasteShow} />
               <Route path="/pastes/list" exact component={PasteList} />
+              <Route path="/pastes/:id" exact component={PasteShow} />
             </Switch>
           </div>
         </Router>

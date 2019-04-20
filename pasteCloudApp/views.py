@@ -4,44 +4,24 @@ from rest_framework import status
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from rest_framework.decorators import api_view
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.csrf import csrf_exempt
-import os
 from pasteCloudApp.models import Paste
 from pasteCloudApp.serializers import PasteSerializer
 from rest_framework import generics
 from rest_framework.response import Response
-
-# @api_view(['POST'])
-# @csrf_exempt
-# def pasteApi(request):
-#     print('got post')
-
-# def index(request):
-#     return HttpResponse("Hello, world. You're at the index.")
-
-def user(request, user_name):
-    return HttpResponse("You're looking at user %s." % user_name)
-
-def post(request, user_name, post_name):
-    response = "You're looking at post_name %s by user_name"
-    return HttpResponse(response % post_name)
+import os
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def pastes_detail(request, pk):
     """
     Retrieve, update or delete a paste by id/pk. (pk = primary key)
     """
-    print('*** pastes_detail')
     
     try:
         paste = Paste.objects.get(pk=pk)
     except paste.DoesNotExist:
-        print('*** DoesNotExist')
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        print('*** GET')
         serializer = PasteSerializer(paste, context={'request': request})
         return Response(serializer.data)
 
@@ -61,12 +41,13 @@ def pastes_list(request):
     """
     List  Pastes, or create a new Paste.
     """
-    print('*** request.data', request.data)
     if request.method == 'GET':
-        print('*** GET')
+        pastes = Paste.objects.all()
+        serializer = PasteSerializer(pastes,context={'request': request} ,many=True)
+        return Response({'data': serializer.data})
+
 
     elif request.method == 'POST':
-        print('*** POST')
         serializer = PasteSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -77,7 +58,6 @@ class ReactAppView(View):
 
     def get(self, request):
         try:
-            print(os.path.join(settings.REACT_APP, 'build', 'index.html'))
             
             with open(os.path.join(settings.REACT_APP, 'build', 'index.html')) as file:
                 return HttpResponse(file.read())

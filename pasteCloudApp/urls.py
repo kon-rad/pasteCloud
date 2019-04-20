@@ -7,6 +7,4 @@ urlpatterns = [
     url(r'^api/paste/$', views.pastes_list),
     url(r'^api/paste/(?P<pk>[0-9]+)$', views.pastes_detail),
     url(r'^', views.ReactAppView.as_view()),
-    path('<str:user_name>/', views.user, name='user'),
-    path('<str:user_name>/<str:post_name>/', views.post, name='post'),
 ]

@@ -1,19 +1,21 @@
 import axios from 'axios';
-axios.defaults.xsrfHeaderName = "X-CSRFToken"
-axios.defaults.xsrfCookieName = 'csrftoken'
 
 const API_URL = 'http://localhost:8000';
 
 export default class PasteCloud {
-    constructor() { };
+  constructor() {}
 
-    getPastes() {
+  getPastes(id) {
+    return axios
+      .get(`${API_URL}/api/paste/${id}`)
+      .then(response => response.data)
+      .catch(err => console.log('err rr', err));
+  }
 
-    }
-
-    postPaste(paste) {
-        return axios
-            .post(`${API_URL}/api/paste`, paste)
-            .then(response => response.data);
-    }
+  postPaste(paste) {
+    return axios
+      .post(`${API_URL}/api/paste/`, paste)
+      .then(response => response.data)
+      .catch(err => console.log('err rr', err));
+  }
 }

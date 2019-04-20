@@ -5,7 +5,7 @@ class User(models.Model):
     user_created = models.DateTimeField('date user created')
 
 class Paste(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     paste_id = models.AutoField(primary_key=True)
     paste_username = models.CharField(max_length=200, default='')
     paste_title = models.CharField(max_length=200)

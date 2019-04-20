@@ -27,20 +27,43 @@ def post(request, user_name, post_name):
     response = "You're looking at post_name %s by user_name"
     return HttpResponse(response % post_name)
 
-# @api_view(['GET', 'POST'])
-# class PasteListCreate(generics.ListCreateAPIView):
-#     queryset = Paste.objects.all()
-#     serializer_class = PasteSerializer
+@api_view(['GET', 'PUT', 'DELETE'])
+def pastes_detail(request, pk):
+    """
+    Retrieve, update or delete a paste by id/pk. (pk = primary key)
+    """
+    print('*** pastes_detail')
+    
+    try:
+        paste = Paste.objects.get(pk=pk)
+    except paste.DoesNotExist:
+        print('*** DoesNotExist')
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
+    if request.method == 'GET':
+        print('*** GET')
+        serializer = PasteSerializer(paste, context={'request': request})
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = PasteSerializer(paste, data=request.data,context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        paste.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET', 'POST'])
 def pastes_list(request):
     """
- List  Pastes, or create a new Paste.
- """
+    List  Pastes, or create a new Paste.
+    """
     print('*** request.data', request.data)
     if request.method == 'GET':
-        print('*** get')
+        print('*** GET')
 
     elif request.method == 'POST':
         print('*** POST')

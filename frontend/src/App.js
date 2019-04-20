@@ -8,9 +8,9 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            paste: null,
-            username: null,
-            pastetitle: null,
+            paste_text: null,
+            paste_username: null,
+            paste_title: null,
         }
     }
 
@@ -63,9 +63,9 @@ class App extends Component {
                 <div className="container">
                     <div className="main__wrapper">
                         <form onSubmit={this.handleSubmit} >
-                            <textarea autoComplete="off" onChange={this.handleChange} name="paste" placeholder="paste your content here" className="main__paste"></textarea>
-                            <input autoComplete="off" onChange={this.handleChange} name="username" placeholder="Usermame" className="main__username" />
-                            <input autoComplete="off" onChange={this.handleChange} name="pastetitle" placeholder="Paste title - hit Enter to submit" className="main__filename" />
+                            <textarea autoComplete="off" onChange={this.handleChange} name="paste_text" placeholder="paste your content here" className="main__paste"></textarea>
+                            <input autoComplete="off" onChange={this.handleChange} name="paste_username" placeholder="Usermame" className="main__username" />
+                            <input autoComplete="off" onChange={this.handleChange} name="paste_title" placeholder="Paste title - hit Enter to submit" className="main__filename" />
                             <input className="waves-effect waves-light btn" type="submit" name="submit" value="Submit" />
                         </form>
                     </div>

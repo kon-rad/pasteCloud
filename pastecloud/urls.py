@@ -15,11 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from pasteCloudApp import views
 from django.conf.urls import url
 
 urlpatterns = [
-    url(r'^api/paste/$', views.pasteApi),
     path('admin/', admin.site.urls),
     path('', include('pasteCloudApp.urls')),
 ]
